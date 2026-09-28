@@ -1,0 +1,95 @@
+<!--
+title: Votre panier | Ube Halaya
+description: Votre panier Ube Halaya. Livraison offerte dès 45 € d’achat.
+preload_image: assets/img/wall.webp
+head_extra:   <meta name="robots" content="noindex">
+-->
+  <main id="contenu">
+    <section class="page-hero page-hero--small wall">
+      <div class="wrap">
+        <p class="script">Presque prêt…</p>
+        <h1 class="h-display">Votre panier</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap cart-page">
+        <div class="cart-page__main" data-page-filled hidden>
+          <div class="panel">
+            <div class="ship-progress ship-progress--page">
+              <span data-page-ship-msg></span>
+              <div class="ship-progress__bar"><span data-page-ship-bar></span></div>
+            </div>
+            <ul class="page-lines" data-page-items></ul>
+          </div>
+          <a class="link-arrow" href="eclat-dube.html">Continuer mes achats</a>
+        </div>
+        <aside class="panel cart-summary" data-page-filled hidden>
+          <h2 class="panel__title">Récapitulatif</h2>
+          <div class="drawer__row"><span>Sous-total</span><span data-page-subtotal></span></div>
+          <div class="drawer__row"><span>Livraison</span><span data-page-shipping></span></div>
+          <div class="drawer__row drawer__total"><span>Total</span><span data-page-total></span></div>
+          <a class="btn btn--block" href="commande.html">Passer commande</a>
+          <p class="drawer__note">Paiement sécurisé · Retours sous 14 jours</p>
+        </aside>
+        <div class="empty-cart" data-page-empty hidden>
+          <p class="script">Votre panier est vide…</p>
+          <p>Une canette suffit pour préparer jusqu’à 25 lattes violets.</p>
+          <a class="btn" href="eclat-dube.html">Découvrir Éclat d’Ubé</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formats -->
+    <section class="section section--cream">
+      <div class="wrap">
+        <h2 class="h-section" data-empty-text="Choisissez votre format" data-filled-text="Envie d’un autre format ?">Choisissez votre format</h2>
+        <p class="script section-sub">Pour vous, ou à partager.</p>
+        <div class="formats">
+          <article class="format-card">
+            <a class="format-card__media zoomable" href="eclat-dube.html?format=canette-1" aria-label="Voir Éclat d’Ubé, une canette">
+              <img src="assets/img/format-1.webp" width="900" height="675" alt="Une canette Éclat d’Ubé" loading="lazy" decoding="async">
+            </a>
+            <div class="format-card__body">
+              <h3>Une canette</h3>
+              <div class="format-card__size">50 g</div>
+              <div class="format-card__price">17,90 €</div>
+              <div class="format-card__unit">17,90 € / canette</div>
+              <div class="format-card__detail">Jusqu’à 25 lattes à 2 g</div>
+              <div class="format-card__tag">Pour découvrir</div>
+              <button class="btn btn--sm" type="button" data-add="canette-1">Ajouter au panier</button>
+            </div>
+          </article>
+          <article class="format-card">
+            <a class="format-card__media zoomable" href="eclat-dube.html?format=coffret-3" aria-label="Voir le coffret découverte, trois canettes">
+              <img src="assets/img/format-3.webp" width="900" height="675" alt="Trois canettes Éclat d’Ubé" loading="lazy" decoding="async"><span class="format-card__save">−13 %</span>
+            </a>
+            <div class="format-card__body">
+              <h3>Coffret découverte</h3>
+              <div class="format-card__size">3 × 50 g · 150 g</div>
+              <div class="format-card__price">46,90 €</div>
+              <div class="format-card__unit">15,63 € / canette</div>
+              <div class="format-card__detail">6,80 € économisés · Livraison offerte</div>
+              <div class="format-card__tag">À partager</div>
+              <button class="btn btn--sm" type="button" data-add="coffret-3">Ajouter au panier</button>
+            </div>
+          </article>
+          <article class="format-card">
+            <a class="format-card__media zoomable" href="eclat-dube.html?format=coffret-6" aria-label="Voir le coffret à partager, six canettes">
+              <img src="assets/img/format-6.webp" width="900" height="675" alt="Six canettes Éclat d’Ubé" loading="lazy" decoding="async"><span class="format-card__save">−21 %</span>
+            </a>
+            <div class="format-card__body">
+              <h3>Coffret à partager</h3>
+              <div class="format-card__size">6 × 50 g · 300 g</div>
+              <div class="format-card__price">84,90 €</div>
+              <div class="format-card__unit">14,15 € / canette</div>
+              <div class="format-card__detail">22,50 € économisés · Livraison offerte</div>
+              <div class="format-card__tag">Pour en profiter plus longtemps</div>
+              <button class="btn btn--sm" type="button" data-add="coffret-6">Ajouter au panier</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
