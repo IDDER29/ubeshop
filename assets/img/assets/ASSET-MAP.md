@@ -18,6 +18,10 @@ Layout / UI screens stay in [`../refs/screens/`](../refs/screens/).
 | [`recettes/`](./recettes/) | Latte, cake, cookies, glace |
 | [`origine/`](./origine/) | Page Découvrir l’ube / racine |
 | [`histoire/`](./histoire/) | Page Notre histoire (mains, cuisine) |
+| [`logo/`](./logo/) | Official logo (`logo-ube-halaya.png`, 650 px). Source of `logo.webp`, favicons and `og-image.jpg`. Never redraw or alter it. |
+
+All photos with a can are generated: the lid has no logo sticker and the label is not the
+real logo. They must be replaced by real product photos (see `docs/PENDING.md`).
 
 ---
 
@@ -55,6 +59,7 @@ Layout / UI screens stay in [`../refs/screens/`](../refs/screens/).
 | Votre recette | `recettes/latte-glace-mousse.jpeg` |
 | En latte | `recettes/latte-glace-mousse.jpeg` or `latte-chaud-tasse.jpeg` |
 | En pâtisserie | `recettes/cake-ube-tranche.jpeg` |
+| « Prêt à préparer votre premier latte ? » (also on Livraison) | `hero/latte-glace-tray-espace-gauche.jpeg` → `cta-latte.webp` (temporary, until a real can photo) |
 
 ### Notre histoire
 | Slot | File |

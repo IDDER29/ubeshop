@@ -5,14 +5,16 @@
   document.documentElement.classList.add("js");
 
   var FREE_SHIPPING = 45;
-  var SHIPPING_COST = 4.9;
+  var SHIPPING_COST = 5.9;
   var LATTES_PER_CAN = 25;
   var STORAGE_KEY = "ube-halaya-cart";
 
+  // lowStock: true shows "Plus que quelques exemplaires en stock" on the product page.
+  // Only switch it on when stock is really low: a false scarcity claim is illegal in France.
   var PRODUCTS = {
-    "canette-1": { name: "Éclat d’Ubé — Une canette", meta: "1 canette · 50 g", content: "1 canette de 50 g", cans: 1, price: 17.9, img: "assets/img/format-1.webp", photo: "assets/img/product-main.webp" },
-    "coffret-3": { name: "Coffret découverte", meta: "3 canettes · 150 g", content: "3 canettes de 50 g dans un coffret cadeau", cans: 3, price: 46.9, img: "assets/img/format-3.webp", photo: "assets/img/gift-pyramid.webp" },
-    "coffret-6": { name: "Coffret à partager", meta: "6 canettes · 300 g", content: "6 canettes de 50 g dans un coffret cadeau", cans: 6, price: 84.9, img: "assets/img/format-6.webp", photo: "assets/img/format-6.webp" }
+    "canette-1": { name: "Éclat d’Ube", meta: "1 canette · 50 g", content: "1 canette de 50 g", cans: 1, price: 17.9, img: "assets/img/format-1.webp", photo: "assets/img/product-main.webp", lowStock: false },
+    "coffret-3": { name: "Coffret découverte", meta: "3 canettes · 150 g", content: "3 canettes de 50 g dans un coffret cadeau", cans: 3, price: 46.9, img: "assets/img/format-3.webp", photo: "assets/img/gift-pyramid.webp", lowStock: false },
+    "coffret-6": { name: "Coffret à partager", meta: "6 canettes · 300 g", content: "6 canettes de 50 g dans un coffret cadeau", cans: 6, price: 84.9, img: "assets/img/format-6.webp", photo: "assets/img/format-6.webp", lowStock: false }
   };
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -167,7 +169,7 @@
     if (!ids.length) {
       itemsEl.innerHTML =
         '<li class="drawer__empty"><p class="script">Votre panier est vide…</p>' +
-        '<a class="btn btn--sm" href="eclat-dube.html">Découvrir Éclat d’Ubé</a></li>';
+        '<a class="btn btn--sm" href="eclat-dube.html">Découvrir Éclat d’Ube</a></li>';
     } else {
       itemsEl.innerHTML = ids.map(function (id) { return lineHTML(id); }).join("") + upsellHTML(ids, remaining);
     }
@@ -306,6 +308,58 @@
     });
   }
 
+  /* ---------- First-visit offer (-10 %) ---------- */
+
+  var WELCOME_KEY = "ube-halaya-welcome-seen";
+  var WELCOME_DELAY = 6000;
+  var welcome = document.getElementById("welcome");
+  var welcomeSkipPage = /\bpage-(panier|commande|404)\b/.test(document.body.className);
+
+  function welcomeSeen() {
+    try { return localStorage.getItem(WELCOME_KEY) === "1"; } catch (e) { return true; }
+  }
+  function markWelcomeSeen() {
+    try { localStorage.setItem(WELCOME_KEY, "1"); } catch (e) { /* ignore */ }
+  }
+
+  if (welcome && typeof welcome.showModal === "function" && !welcomeSkipPage && !welcomeSeen()) {
+    setTimeout(function () {
+      // Don't cover the cart or the mobile menu; try again on the next page
+      if (isCartOpen() || document.body.classList.contains("menu-open") || welcomeSeen()) return;
+      markWelcomeSeen();
+      welcome.showModal();
+    }, WELCOME_DELAY);
+
+    $$("[data-close-welcome]", welcome).forEach(function (b) {
+      b.addEventListener("click", function () { welcome.close(); });
+    });
+    // Click on the dimmed backdrop closes it
+    welcome.addEventListener("click", function (e) { if (e.target === welcome) welcome.close(); });
+
+    var welcomeForm = $(".welcome__form", welcome);
+    welcomeForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = $("input", welcomeForm);
+      var error = $(".welcome__error", welcomeForm);
+      if (!input.value || !input.checkValidity()) {
+        error.textContent = "Merci d’indiquer une adresse e-mail valide.";
+        input.focus();
+        return;
+      }
+      welcomeForm.hidden = true;
+      $(".welcome__skip", welcome).hidden = true;
+      $(".welcome__done", welcome).hidden = false;
+      $("[data-copy-code]", welcome).focus();
+    });
+
+    $("[data-copy-code]", welcome).addEventListener("click", function (e) {
+      var btn = e.currentTarget;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(btn.dataset.copyCode).then(function () { $("span", btn).textContent = "Copié !"; }, function () {});
+      }
+    });
+  }
+
   /* ---------- Reveal on scroll ---------- */
 
   var revealTargets = $$(".h-section, .format-card, .step, .recipe, .discover-banner, .journey article, .why, .tale, .pledges li, .review, .story__copy, .gift-card, .offer-band__copy, .faq, .specs, .final-cta__inner");
@@ -364,6 +418,8 @@
       unitEl.textContent = money(p.price / (p.cans * LATTES_PER_CAN));
       var contentEl = document.getElementById("format-content");
       if (contentEl) contentEl.textContent = p.content;
+      var stockEl = document.getElementById("stock-low");
+      if (stockEl) stockEl.hidden = !p.lowStock;
       $("#mobile-buy-price").textContent = money(p.price * qty());
       $("#mobile-buy-format").textContent = p.meta + (qty() > 1 ? " × " + qty() : "");
     };
@@ -540,6 +596,13 @@
 
   var contactForm = $("[data-contact-form]");
   if (contactForm) {
+    // contact.html?sujet=avis preselects "Laisser un avis"
+    var sujet = new URLSearchParams(location.search).get("sujet");
+    var sujetOption = sujet && $('option[data-sujet="' + sujet.replace(/[^\w-]/g, "") + '"]', contactForm);
+    if (sujetOption) {
+      sujetOption.selected = true;
+      contactForm.elements.message.placeholder = "Votre avis sur Éclat d’Ube, et le prénom à afficher avec (par exemple : Sarah M.)";
+    }
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!validate(contactForm)) return;

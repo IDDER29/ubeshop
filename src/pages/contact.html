@@ -1,6 +1,6 @@
 <!--
 title: Contact | Ube Halaya
-description: Une question sur Éclat d’Ubé, votre commande ou une idée de recette ? Écrivez-nous.
+description: Une question sur Éclat d’Ube, votre commande ou une idée de recette ? Écrivez-nous.
 preload_image: assets/img/contact-hero.webp
 -->
   <main id="contenu">
@@ -12,14 +12,14 @@ preload_image: assets/img/contact-hero.webp
           <p>Une commande, un conseil de préparation, une recette à partager : nous lisons chaque message.</p>
         </div>
         <figure class="ube-hero__img">
-          <img src="assets/img/contact-hero.webp" width="1400" height="788" alt="Canette Éclat d’Ubé, latte glacé à l’ube et bol de poudre sur un plateau en bois" fetchpriority="high">
+          <img src="assets/img/contact-hero.webp" width="1400" height="788" alt="Canette Éclat d’Ube, latte glacé à l’ube et bol de poudre sur un plateau en bois" fetchpriority="high">
         </figure>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap contact">
-        <form class="panel contact-form" data-contact-form data-email="" novalidate>
+        <form class="panel contact-form" data-contact-form data-email="contact@ubehalaya.fr" novalidate>
           <h2 class="panel__title">Votre message</h2>
           <div class="form-grid">
             <div class="field">
@@ -35,9 +35,10 @@ preload_image: assets/img/contact-hero.webp
             <div class="field span-2">
               <label for="c-subject">Sujet</label>
               <select class="input" id="c-subject" name="subject">
-                <option>Question sur Éclat d’Ubé</option>
+                <option>Question sur Éclat d’Ube</option>
                 <option>Suivi de commande</option>
                 <option>Livraison et retours</option>
+                <option value="Laisser un avis" data-sujet="avis">Laisser un avis</option>
                 <option>Autre</option>
               </select>
             </div>
@@ -54,7 +55,7 @@ preload_image: assets/img/contact-hero.webp
         <aside class="contact-aside">
           <div class="value-card">
             <h3>Par e-mail</h3>
-            <p><span class="placeholder">[adresse e-mail de contact]</span></p>
+            <p><a href="mailto:contact@ubehalaya.fr">contact@ubehalaya.fr</a><br>Réponse sous 24 h.</p>
           </div>
           <div class="value-card">
             <h3>Livraison et retours</h3>

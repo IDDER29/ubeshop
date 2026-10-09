@@ -1,6 +1,6 @@
 <!--
-title: Éclat d’Ubé — Poudre d’ube 50 g | Ube Halaya
-description: Éclat d’Ubé, poudre d’ube en canette de 50 g : jusqu’à 25 lattes. Choisissez votre format : 1, 3 ou 6 canettes.
+title: Éclat d’Ube — Poudre d’ube 50 g | Ube Halaya
+description: Éclat d’Ube, poudre d’ube en canette de 50 g : jusqu’à 25 lattes. Choisissez votre format : 1, 3 ou 6 canettes.
 preload_image: assets/img/product-main.webp
 -->
   <main id="contenu">
@@ -8,20 +8,20 @@ preload_image: assets/img/product-main.webp
       <nav class="breadcrumb" aria-label="Fil d’Ariane">
         <ol>
           <li><a href="index.html">Accueil</a></li>
-          <li aria-current="page">Éclat d’Ubé</li>
+          <li aria-current="page">Éclat d’Ube</li>
         </ol>
       </nav>
 
       <section class="product">
         <div class="gallery">
           <div class="gallery__main">
-            <img id="gallery-img" fetchpriority="high" src="assets/img/product-main.webp" width="402" height="373" alt="Canette Éclat d’Ubé, bol de poudre et latte à l’ube sur un plateau en bois">
+            <img id="gallery-img" fetchpriority="high" src="assets/img/product-main.webp" width="402" height="373" alt="Canette Éclat d’Ube, bol de poudre et latte à l’ube sur un plateau en bois">
             <button class="gallery__zoom" type="button" aria-label="Agrandir l’image">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8M10.5 7.5v6M7.5 10.5h6"/></svg>
             </button>
           </div>
           <div class="gallery__thumbs">
-            <button type="button" aria-pressed="true" data-src="assets/img/product-main.webp"><img src="assets/img/product-main.webp" alt="Canette Éclat d’Ubé sur son plateau" width="120" height="90"></button>
+            <button type="button" aria-pressed="true" data-src="assets/img/product-main.webp"><img src="assets/img/product-main.webp" alt="Canette Éclat d’Ube sur son plateau" width="120" height="90"></button>
             <button type="button" aria-pressed="false" data-src="assets/img/ube-latte.webp"><img src="assets/img/ube-latte.webp" alt="Latte à l’ube marbré" width="120" height="90"></button>
             <button type="button" aria-pressed="false" data-src="assets/img/ube-powder.webp"><img src="assets/img/ube-powder.webp" alt="Bol de poudre d’ube" width="120" height="90"></button>
             <button type="button" aria-pressed="false" data-src="assets/img/gift-pyramid.webp"><img src="assets/img/gift-pyramid.webp" alt="Trois canettes empilées" width="120" height="90"></button>
@@ -30,7 +30,7 @@ preload_image: assets/img/product-main.webp
 
         <div class="buybox">
           <p class="script">La voici, elle vous attendait…</p>
-          <h1 class="h-display">Éclat d’Ubé</h1>
+          <h1 class="h-display">Éclat d’Ube</h1>
           <p class="buybox__sub">Poudre d’ube · 50 g par canette</p>
           <p class="buybox__price" id="product-price" aria-live="polite">17,90 €</p>
           <p class="buybox__desc">Pour vos lattes et desserts maison.</p>
@@ -40,7 +40,7 @@ preload_image: assets/img/product-main.webp
             <fieldset class="variants" aria-labelledby="format-title">
               <div class="variant">
                 <input type="radio" name="format" id="f1" value="canette-1" checked>
-                <label for="f1"><span class="variant__name">Une canette</span><span class="variant__size">1 × 50 g</span><strong>17,90 €</strong><span class="variant__unit">17,90 € / canette</span></label>
+                <label for="f1"><span class="variant__name">Éclat d’Ube</span><span class="variant__size">1 × 50 g</span><strong>17,90 €</strong><span class="variant__unit">17,90 € / canette</span></label>
               </div>
               <div class="variant">
                 <input type="radio" name="format" id="f3" value="coffret-3">
@@ -60,9 +60,9 @@ preload_image: assets/img/product-main.webp
               </div>
               <button class="btn" type="submit" id="add-btn">Ajouter au panier<span class="add-btn__price"> · <span id="btn-price">17,90 €</span></span></button>
             </div>
-            <p class="variants__content">Contenu : <span id="format-content">1 canette de 50 g</span> · Disponibilité : <span class="placeholder">[à relier au stock Shopify]</span></p>
+            <p class="variants__content">Contenu : <span id="format-content">1 canette de 50 g</span><span class="stock-low" id="stock-low" hidden> · Plus que quelques exemplaires en stock</span></p>
           </form>
-          <p class="buybox__ship"><a href="livraison.html">Livraison offerte dès 45 € d’achat</a> · Expédition sous <span class="placeholder">[délai]</span></p>
+          <p class="buybox__ship"><a class="nowrap" href="livraison.html">Livraison offerte dès 45 € d’achat</a> · <span class="nowrap">Expédition sous 48 h</span> · <a class="nowrap" href="contact.html">Service client : réponse sous 24 h</a></p>
           <p class="buybox__unit">La poudre revient à <span id="unit-price">0,72 €</span> par latte à 2 g, hors lait et garnitures.</p>
           <ul class="buybox__perks">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15h16M6 15l1-6h10l1 6"/><path d="M9 9V6h6v3"/><path d="M5 19h14"/></svg>2 à 3 g selon vos goûts</li>
@@ -84,9 +84,6 @@ preload_image: assets/img/product-main.webp
             <div class="specs__row"><dt>Goût</dt><dd>Doux, entre vanille et noisette</dd></div>
             <div class="specs__row"><dt>Préparation</dt><dd>2 à 3 g par latte, délayés dans un peu d’eau chaude avant d’ajouter le lait. Jusqu’à 25 lattes à 2 g, environ 16 à 3 g.</dd></div>
             <div class="specs__row"><dt>Conservation</dt><dd>Canette bien refermée, au sec, à l’abri de la lumière et de la chaleur. À consommer de préférence dans les 12 mois.</dd></div>
-            <div class="specs__row"><dt>Allergènes</dt><dd>Conditionnée dans un atelier qui manipule également des fruits à coque.</dd></div>
-            <div class="specs__row"><dt>Valeurs nutritionnelles</dt><dd><span class="placeholder">[pour 100 g, à reprendre de l’étiquette]</span></dd></div>
-            <div class="specs__row"><dt>Responsable</dt><dd><span class="placeholder">[raison sociale et adresse figurant sur l’étiquette]</span></dd></div>
           </dl>
         </div>
       </section>
@@ -119,10 +116,10 @@ preload_image: assets/img/product-main.webp
       <!-- Gift -->
       <section class="product-gift">
         <div class="gift-card">
-          <img src="assets/img/gift-pyramid.webp" width="1200" height="669" alt="Le coffret découverte : trois canettes Éclat d’Ubé" loading="lazy" decoding="async">
+          <img src="assets/img/gift-pyramid.webp" width="1200" height="669" alt="Le coffret découverte : trois canettes Éclat d’Ube" loading="lazy" decoding="async">
           <div class="gift-card__copy">
             <h2>À partager, à offrir.</h2>
-            <p>Trois canettes de 50 g dans un coffret cadeau, pour faire découvrir Éclat d’Ubé à vos proches.</p>
+            <p>Trois canettes de 50 g dans un coffret cadeau, pour faire découvrir Éclat d’Ube à vos proches.</p>
             <ul class="gift-card__facts">
               <li>−13 % · 6,80 € économisés</li>
               <li>Livraison offerte</li>
@@ -135,7 +132,7 @@ preload_image: assets/img/product-main.webp
       <!-- FAQ -->
       <section class="section" id="faq">
         <h2 class="h-section">Vos questions, tout simplement.</h2>
-        <p class="section-lead">Dosage, préparation, conservation : l’essentiel sur Éclat d’Ubé.</p>
+        <p class="section-lead">Dosage, préparation, conservation : l’essentiel sur Éclat d’Ube.</p>
         <div class="faq">
           <details>
             <summary>Quel dosage pour mon premier latte ?</summary>
@@ -151,7 +148,7 @@ preload_image: assets/img/product-main.webp
           </details>
           <details>
             <summary>Quand la livraison est-elle offerte ?</summary>
-            <p>Dès 45 € d’achat en France métropolitaine. En dessous, la livraison est à 4,90 €. Retours acceptés sous 14 jours pour les canettes non ouvertes.</p>
+            <p>Dès 45 € d’achat en France métropolitaine. En dessous, la livraison est à 5,90 €. Retours acceptés sous 14 jours pour les canettes non ouvertes.</p>
           </details>
         </div>
       </section>
@@ -167,7 +164,7 @@ preload_image: assets/img/product-main.webp
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": "Éclat d’Ubé — poudre d’ube",
+      "name": "Éclat d’Ube — poudre d’ube",
       "brand": { "@type": "Brand", "name": "Ube Halaya" },
       "description": "Poudre d’ube (igname violette) en canette de 50 g, pour lattes et desserts maison. Jusqu’à 25 lattes à 2 g par préparation.",
       "image": "assets/img/product-main.webp",

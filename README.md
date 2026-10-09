@@ -1,11 +1,11 @@
-# Ube Halaya — Éclat d’Ubé
+# Ube Halaya — Éclat d’Ube
 
 Static HTML/CSS/JS storefront built from the UI flow mockups. No framework, no dependencies.
 
 | Page | File |
 | --- | --- |
 | Accueil (mockups 1–3) | `index.html` |
-| Fiche produit Éclat d’Ubé (mockup 4) | `eclat-dube.html` |
+| Fiche produit Éclat d’Ube (mockup 4) | `eclat-dube.html` |
 | Découvrir l’ube (mockup 5) | `decouvrir-ube.html` |
 | Recettes (latte signature, cake à l’ube, cookiez à l’ube) | `recettes.html` |
 | Notre histoire | `notre-histoire.html` |
@@ -35,11 +35,13 @@ python3 build.py           → writes index.html, eclat-dube.html, decouvrir-ube
 - `assets/css/styles.css` — design tokens and all styles, organised by section (see the table of contents at the top).
 - `assets/js/main.js` — cart drawer (saved in `localStorage`, synced across tabs), free-shipping progress from 45 €, format/quantity picker, gallery and zoom, sticky header, mobile menu, sticky add-to-cart bar on phones, recipe panel, newsletter.
 - `assets/fonts/` — self-hosted Fraunces, Figtree and Sacramento (no Google Fonts request).
-- `assets/img/` — WebP photos made from the photo shoot, `logo.svg` / `favicon.svg`, `wall.webp` texture tile, `og-image.jpg` (link preview, 1200×630). The original photos are in `assets/img/assets/`; `ASSET-MAP.md` there says which photo goes where.
+- `assets/img/` — WebP photos made from the photo shoot, `logo.webp` / `favicon-32.png` / `apple-touch-icon.png` (exported from the official logo in `assets/img/assets/logo/`), `wall.webp` texture tile, `og-image.jpg` (link preview, 1200×630). The original photos are in `assets/img/assets/`; `ASSET-MAP.md` there says which photo goes where.
 
 ## Flow
 
-Home → “Choisir ce format” opens the product page with that format preselected (`eclat-dube.html?format=coffret-3`) → add to cart → cart drawer. Recipe links open the full “Latte signature” recipe (`eclat-dube.html#latte-signature`).
+Home → “Ajouter au panier” on a format card adds it and opens the cart drawer; the card photo opens the product page with that format preselected (`eclat-dube.html?format=coffret-3`). Recipe links open the full “Latte signature” recipe (`recettes.html#latte-signature`). A −10 % welcome popup (code `BIENVENUE10`) appears once per visitor, 6 s after arriving.
+
+Open client feedback and everything still waiting on the client is tracked in `docs/PENDING.md`.
 
 ## Run
 
@@ -72,13 +74,11 @@ dans `src/` pour toutes les retrouver.
 
 | Placeholder | Où |
 |---|---|
-| `[adresse e-mail de contact]` | pied de page, contact, pages légales (et `data-email` du formulaire de contact) |
-| `[lien Instagram]`, `[lien TikTok]` | pied de page |
-| `[Avis client réel…]`, `[Prénom, initiale]`, `[date]` | accueil, section « Vous l’avez goûté » — uniquement des avis réels |
-| `[à relier au stock Shopify]` | fiche produit, disponibilité |
-| `[délai]`, `[transporteur et délai]` | fiche produit, page livraison, CGV |
-| valeurs nutritionnelles, responsable | fiche produit, fiche technique |
+| `[Avis client réel…]`, `[Prénom, initiale]`, `[date]`, note de vérification | accueil, « Vous l’avez goûté » — bloc masqué (`hidden`) tant qu’il n’y a pas d’avis réels |
+| `[transporteur et délai de livraison]`, `[délai]` | page livraison, CGV |
 | raison sociale, SIREN, hébergeur, médiateur… | mentions légales, CGV, confidentialité |
+
+Le détail (photos à remplacer, code promo, stock, valeurs nutritionnelles…) est dans `docs/PENDING.md`.
 
 Aperçu de lien : `og:image` pointe vers `assets/img/og-image.jpg` sans domaine ; y mettre l’adresse
 complète (`https://…/assets/img/og-image.jpg`) une fois le domaine connu.
