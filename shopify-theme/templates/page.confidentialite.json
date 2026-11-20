@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "confidentialite": {
+      "type": "confidentialite"
+    }
+  },
+  "order": [
+    "confidentialite"
+  ]
+}

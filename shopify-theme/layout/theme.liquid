@@ -1,0 +1,57 @@
+{% liquid
+  assign share_image = 'og-image.jpg' | asset_url
+  assign asset_prefix = share_image | slice: 0, 2
+  assign asset_first_character = share_image | slice: 0, 1
+  if asset_prefix == '//'
+    assign share_image = share_image | prepend: 'https:'
+  elsif asset_first_character == '/'
+    assign share_image = share_image | prepend: request.origin
+  endif
+  assign page_class = template.suffix | default: template.name
+  case template.name
+    when 'product'
+      assign page_class = 'eclat-dube'
+    when 'cart'
+      assign page_class = 'panier'
+  endcase
+%}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title | default: shop.name | escape }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  <meta name="theme-color" content="#401838">
+  <link rel="icon" href="{{ 'favicon-32.png' | asset_url }}" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Ube Halaya">
+  <meta property="og:title" content="{{ page_title | default: shop.name | escape }}">
+  <meta property="og:description" content="{{ page_description | escape }}">
+  <meta property="og:url" content="{{ canonical_url | escape }}">
+  <meta property="og:image" content="{{ share_image | escape }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Votre prochain latte, à l’ube : un latte glacé violet marbré sur un plateau en bois, avec le logo Ube Halaya">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ share_image | escape }}">
+  {{ 'fraunces.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+  {{ 'instrument-sans.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+  <link rel="stylesheet" href="{{ 'styles.css' | asset_url }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {{ content_for_header }}
+  </head>
+<body class="page-{{ page_class }}">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  {% section 'site-header' %}
+  <main id="contenu">
+    {{ content_for_layout }}
+  </main>
+  {% section 'site-footer' %}
+  {% render 'shop-data' %}
+  <script src="{{ 'main.js' | asset_url }}" defer></script>
+</body>
+</html>

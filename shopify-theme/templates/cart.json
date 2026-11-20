@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "panier": {
+      "type": "panier"
+    }
+  },
+  "order": [
+    "panier"
+  ]
+}

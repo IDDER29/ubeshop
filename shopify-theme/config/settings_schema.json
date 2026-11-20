@@ -1,0 +1,20 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Ube Halaya",
+    "theme_version": "1.0.0",
+    "theme_author": "Ube Halaya",
+    "theme_support_email": "contact@ubehalaya.fr",
+    "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes"
+  },
+  {
+    "name": "Boutique",
+    "settings": [
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Produit Éclat d’Ube"
+      }
+    ]
+  }
+]

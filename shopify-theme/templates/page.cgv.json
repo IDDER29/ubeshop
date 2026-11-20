@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "cgv": {
+      "type": "cgv"
+    }
+  },
+  "order": [
+    "cgv"
+  ]
+}

@@ -1,0 +1,41 @@
+  <div class="announce">Livraison offerte dès 45&nbsp;€ d’achat</div>
+
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+        <span class="menu-toggle__bars" aria-hidden="true"></span><span class="sr-only">Menu</span>
+      </button>
+      <a class="logo" href="{{ routes.root_url }}" aria-label="Ube Halaya — accueil">
+        <img src="{{ 'logo.webp' | asset_url }}" width="108" height="108" alt="">
+      </a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="{% if settings.featured_product != blank %}{{ settings.featured_product.url }}{% elsif all_products['eclat-dube'] != blank %}{{ all_products['eclat-dube'].url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}"{% if template.name == 'product' %} aria-current="page"{% endif %}>Boutique</a></li>
+          <li><a href="{{ pages["decouvrir-ube"].url | default: "/pages/decouvrir-ube" }}"{% if template.suffix == 'decouvrir-ube' %} aria-current="page"{% endif %}>Découvrir l’ube</a></li>
+          <li><a href="{{ pages["recettes"].url | default: "/pages/recettes" }}"{% if template.suffix == 'recettes' %} aria-current="page"{% endif %}>Recettes</a></li>
+          <li><a href="{{ pages["notre-histoire"].url | default: "/pages/notre-histoire" }}"{% if template.suffix == 'notre-histoire' %} aria-current="page"{% endif %}>Notre histoire</a></li>
+        </ul>
+        <div class="nav__extra">
+          <a class="btn btn--block" href="{% if settings.featured_product != blank %}{{ settings.featured_product.url }}{% elsif all_products['eclat-dube'] != blank %}{{ all_products['eclat-dube'].url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}">Découvrir Éclat d’Ube · dès <span data-from-price>17,90&nbsp;€</span></a>
+          <ul class="nav__more">
+            <li><a href="{{ pages["livraison"].url | default: "/pages/livraison" }}">Livraison et retours</a></li>
+            <li><a href="{{ pages["contact"].url | default: "/pages/contact" }}">Contact</a></li>
+          </ul>
+          <p class="nav__note">Livraison offerte dès 45&nbsp;€ · Paiement sécurisé</p>
+        </div>
+      </nav>
+      <div class="nav-backdrop" hidden></div>
+      <button class="cart-btn" type="button" data-open-cart aria-controls="cart-drawer">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M6 10h20l-1.4 18H7.4z"/><path d="M11.5 13V8.5a4.5 4.5 0 0 1 9 0V13"/></svg>
+        <span class="cart-btn__label">Panier</span>
+        <span class="cart-count" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+{% schema %}
+{
+  "name": "En-tête",
+  "settings": []
+}
+{% endschema %}

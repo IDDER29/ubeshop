@@ -1,0 +1,20 @@
+
+    <section class="page-hero wall not-found">
+      <div class="wrap">
+        <p class="script">Oups…</p>
+        <h1 class="h-display">Page introuvable</h1>
+        <p class="page-hero__lead">Cette page s’est évaporée comme une mousse de latte. Voici de quoi repartir du bon pied.</p>
+        <div class="not-found__actions">
+          <a class="btn btn--lg" href="{% if settings.featured_product != blank %}{{ settings.featured_product.url }}{% elsif all_products['eclat-dube'] != blank %}{{ all_products['eclat-dube'].url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}">Découvrir Éclat d’Ube</a>
+          <a class="link-arrow" href="{{ routes.root_url }}">Retour à l’accueil</a>
+        </div>
+      </div>
+      <div class="hero__scene"><img src="{{ 'hero-scene.webp' | asset_url }}" width="1672" height="941" alt="" loading="lazy" decoding="async"></div>
+    </section>
+
+{% schema %}
+{
+  "name": "Page introuvable",
+  "settings": []
+}
+{% endschema %}

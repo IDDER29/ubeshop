@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "decouvrir-ube": {
+      "type": "decouvrir-ube"
+    }
+  },
+  "order": [
+    "decouvrir-ube"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "catalogue": {
+      "type": "catalogue"
+    }
+  },
+  "order": [
+    "catalogue"
+  ]
+}

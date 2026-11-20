@@ -1,0 +1,32 @@
+<section class="section">
+  <div class="wrap">
+    <h1 class="h-display">{{ collection.title | default: 'Boutique' | escape }}</h1>
+    {% paginate collection.products by 24 %}
+      <div class="formats">
+        {% for item in collection.products %}
+          <article class="format-card">
+            <a class="format-card__media zoomable" href="{{ item.url }}">
+              {% if item.featured_image %}
+                {{ item.featured_image | image_url: width: 900 | image_tag: loading: 'lazy' }}
+              {% endif %}
+            </a>
+            <div class="format-card__body">
+              <h2><a href="{{ item.url }}">{{ item.title | escape }}</a></h2>
+              <p class="format-card__price">{{ item.price | money }}</p>
+            </div>
+          </article>
+        {% else %}
+          <p>Aucun produit dans cette collection.</p>
+        {% endfor %}
+      </div>
+      {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Catalogue",
+  "settings": []
+}
+{% endschema %}

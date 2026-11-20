@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "livraison": {
+      "type": "livraison"
+    }
+  },
+  "order": [
+    "livraison"
+  ]
+}

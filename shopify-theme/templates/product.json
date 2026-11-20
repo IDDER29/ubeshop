@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "eclat-dube": {
+      "type": "eclat-dube"
+    }
+  },
+  "order": [
+    "eclat-dube"
+  ]
+}

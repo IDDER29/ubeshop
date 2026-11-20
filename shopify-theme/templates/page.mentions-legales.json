@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "mentions-legales": {
+      "type": "mentions-legales"
+    }
+  },
+  "order": [
+    "mentions-legales"
+  ]
+}

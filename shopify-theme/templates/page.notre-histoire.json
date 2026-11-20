@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "notre-histoire": {
+      "type": "notre-histoire"
+    }
+  },
+  "order": [
+    "notre-histoire"
+  ]
+}

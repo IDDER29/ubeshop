@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "recettes": {
+      "type": "recettes"
+    }
+  },
+  "order": [
+    "recettes"
+  ]
+}

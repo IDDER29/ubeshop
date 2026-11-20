@@ -1,0 +1,40 @@
+{% doc %}
+  Exposes the featured product variants and Shopify cart to the storefront script.
+{% enddoc %}
+{% liquid
+  assign featured = settings.featured_product
+  if featured == blank
+    assign featured = all_products['eclat-dube']
+  endif
+  if template.name == 'product'
+    assign featured = product
+  endif
+  assign format_keys = 'canette-1,coffret-3,coffret-6' | split: ','
+%}
+<script type="application/json" id="ube-shop-data">
+{
+  "root": {{ routes.root_url | json }},
+  "currency": {{ cart.currency.iso_code | default: shop.currency | json }},
+  "productUrl": {{ featured.url | default: routes.all_products_collection_url | json }},
+  "selectedVariant": {{ featured.selected_variant.id | json }},
+  "cart": {{ cart | json }},
+  "variants": {
+    {% for key in format_keys %}
+      {% assign variant = featured.variants | where: 'sku', key | first %}
+      {{ key | json }}: {
+        "id": {{ variant.id | json }},
+        "price": {{ variant.price | json }},
+        "available": {{ variant.available | json }},
+        "lowStock": {% if variant.available and variant.inventory_management and variant.inventory_policy == 'deny' and variant.inventory_quantity > 0 and variant.inventory_quantity <= 5 %}true{% else %}false{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  },
+  "images": {
+    "canette-1": {{ 'format-1.webp' | asset_url | json }},
+    "coffret-3": {{ 'format-3.webp' | asset_url | json }},
+    "coffret-6": {{ 'format-6.webp' | asset_url | json }},
+    "product-main": {{ 'product-main.webp' | asset_url | json }},
+    "gift-pyramid": {{ 'gift-pyramid.webp' | asset_url | json }}
+  }
+}
+</script>
